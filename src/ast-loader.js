@@ -17,8 +17,8 @@ function getChildren(node) {
   children = children.concat(normalizeArray(node.declarations));
   children = children.concat(normalizeArray(node.init));
   children = children.concat(normalizeArray(node.expression));
-  children = children.concat(normalizeArray(node.callee));
-  children = children.concat(normalizeArray(node.params).map(p => Object.assign({}, p, {parent: node})));
+  children = children.concat(normalizeArray(node.callee).map(p => {p.parent = node; return p}));
+  children = children.concat(normalizeArray(node.params).map(p => {p.parent = node; return p}));
 
   return children;
 }

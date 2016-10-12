@@ -1,8 +1,8 @@
 # Features
 
-- [x] default function parameters
-- [ ] basic functionality
-- [ ] explicit undefined defers to the default
+## default function parameters
+- [x] basic functionality
+- [x] explicit undefined defers to the default
 - [ ] defaults can refer to previous params
 - [ ] arguments object interaction
 - [ ] temporal dead zone
