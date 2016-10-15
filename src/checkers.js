@@ -5,7 +5,6 @@ module.exports = (code) => {
   astLoader(code, (n) => ast.push(n));
 
   return {
-    ast: ast,
     defaultParams: {
       basic: () =>
         ast.filter(n => n.type === 'AssignmentPattern'
@@ -13,9 +12,9 @@ module.exports = (code) => {
 
       explicitUndefined: () =>
         ast.filter(n => {
-          debugger;
           return n.type === 'AssignmentPattern'
                 && n.parent.type === 'FunctionExpression'
+                && n.parent.parent.arguments[n.parent.params.indexOf(n)]
                 && n.parent.parent.arguments[n.parent.params.indexOf(n)].name === 'undefined'}).length > 0
 
     },
