@@ -22,3 +22,14 @@ test('Default parameters - explicit undefined defers to the default', function (
 
     t.true(result.defaultParams.explicitUndefined());
 });
+
+test('Default parameters - defaults can refer to previous params', function (t) {
+    let result = checkers(`
+      (function (a, b = a) {
+        return b === 5;
+      }(5))`);
+
+    t.plan(1);
+
+    t.true(result.defaultParams.referPreviousParam());
+});
